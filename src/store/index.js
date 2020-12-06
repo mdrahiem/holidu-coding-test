@@ -3,9 +3,8 @@ import createSagaMiddleware from 'redux-saga';
 import mainReducer from "../reducers"; 
 import {composeWithDevTools} from 'redux-devtools-extension/developmentOnly'; 
 import sagas from '../sagas'; 
-import { Map } from 'immutable'; 
+import initialState from './initialState';
 
-const initialState = new Map({}); 
 const sagaMiddleware = createSagaMiddleware(); 
 const store = createStore( 
   mainReducer, 

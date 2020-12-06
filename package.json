@@ -49,6 +49,7 @@
     "react-dom": "^16.13.1",
     "react-rating": "^2.0.5",
     "react-redux": "^7.2.1",
+    "react-simple-image-slider": "^2.0.1",
     "react-table": "^7.6.0",
     "react-toastify": "^6.0.9",
     "redux": "^4.0.5",

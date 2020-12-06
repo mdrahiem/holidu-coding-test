@@ -9,10 +9,6 @@ function* sagas() {
         action.method = 'get' 
         yield fork(sendRequest, action); 
         break; 
-      case actionTypes['Effects/POST_REQUEST']: 
-        action.method = 'post' 
-        yield fork(sendRequest, action); 
-        break; 
       default: 
         break; 
     } 

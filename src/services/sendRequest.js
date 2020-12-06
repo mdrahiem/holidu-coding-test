@@ -1,12 +1,12 @@
 import {call, put} from 'redux-saga/effects';
 import axios from '../services/axios';
 import actionTypes from '../sagas/actionTypes';
+import { baseURL } from '../helpers/constants';
 
-const baseURL = 'https://api.holidu.com/rest';
 
 export default function* sendRequest(action) {
   let absUrl = `${baseURL}/${action.payload.endpoint}`;
-  let key = `${action.payload.endpoint}.${action.method}`;
+  let key = `appData.${action.payload.endpoint}.${action.method}`;
   let ajaxConfig = {
     method: action.method.toUpperCase(),
     headers: {

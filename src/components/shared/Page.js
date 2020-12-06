@@ -1,3 +1,9 @@
+/*
+ * @Name:     Page
+ * @Descr:    It's a Parent component where we can manager Header, Footer etc.
+ *
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import actionTypes from '../../sagas/actionTypes';

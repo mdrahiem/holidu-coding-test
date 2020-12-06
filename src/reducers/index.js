@@ -1,5 +1,5 @@
 import actionTypes from '../sagas/actionTypes'; 
-import Immutable from 'immutable'; 
+import Immutable, { List } from 'immutable'; 
 
 export default function mainReducer(state, action) { 
   try { 
@@ -8,10 +8,14 @@ export default function mainReducer(state, action) {
         try { 
           if (typeof action.payload.path === 'string') { 
             action.payload.path = action.payload.path.split('.'); 
-          } 
+          }
+          if (action.payload.path.includes('favourites')) {
+            const favourites = state.getIn('appData.favourites'.split('.'), new List([]));
+            action.payload.data = favourites.set(favourites.size, action.payload.data)
+          }
           return state.mergeDeep(action.payload.path, 
-              Immutable.fromJS(action.payload.data)); 
-        } catch (e) { 
+            Immutable.fromJS(action.payload.data)); 
+        } catch (e) {
           return state.setIn(action.payload.path, action.payload.data); 
         } 
       default: 
