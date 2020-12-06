@@ -13,14 +13,6 @@ function* sagas() {
         action.method = 'post' 
         yield fork(sendRequest, action); 
         break; 
-      case actionTypes['Effects/PUT_REQUEST']: 
-        action.method = 'put' 
-        yield fork(sendRequest, action); 
-        break; 
-      case actionTypes['Effects/DELETE_REQUEST']: 
-        action.method = 'delete' 
-        yield fork(sendRequest, action); 
-        break; 
       default: 
         break; 
     } 

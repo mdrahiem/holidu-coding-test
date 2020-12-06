@@ -2,18 +2,37 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'brand-green': '#AAEC2D',
-        'brand-green-dark': '#7ABA00',
-        'brand-green-200': '#eefbd5'
+        primary: '#0c6eef',
+        secondary: '#FF6064'
       },
       fontFamily: {
-        display: ['Space Mono'],
-        body: ['Rubik']
+        display: ['Open Sans', 'sans-serif'],
+        body: ['Open Sans', 'sans-serif']
       }
     }
   },
   variants: {
     backgroundColor: ['responsive', 'hover', 'focus', 'active']
   },
-  plugins: []
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        '.container': {
+          maxWidth: '100%',
+          '@screen sm': {
+            maxWidth: '640px',
+          },
+          '@screen md': {
+            maxWidth: '768px',
+          },
+          '@screen lg': {
+            maxWidth: '1280px',
+          },
+          '@screen xl': {
+            maxWidth: '1530px',
+          },
+        }
+      })
+    }
+  ]
 }

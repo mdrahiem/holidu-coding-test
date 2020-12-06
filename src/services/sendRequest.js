@@ -2,7 +2,7 @@ import {call, put} from 'redux-saga/effects';
 import axios from '../services/axios';
 import actionTypes from '../sagas/actionTypes';
 
-const baseURL = 'https://reqres.in/api';
+const baseURL = 'https://api.holidu.com/rest';
 
 export default function* sendRequest(action) {
   let absUrl = `${baseURL}/${action.payload.endpoint}`;
