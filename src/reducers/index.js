@@ -11,7 +11,12 @@ export default function mainReducer(state, action) {
           }
           if (action.payload.path.includes('favourites')) {
             const favourites = state.getIn('appData.favourites'.split('.'), new List([]));
-            action.payload.data = favourites.set(favourites.size, action.payload.data)
+            const checkIndex = favourites.findIndex(f => f == action.payload.data);
+            if (favourites.size && checkIndex >= 0) {     // checking for existing favourites
+              action.payload.data = favourites.delete(checkIndex)
+            } else {
+              action.payload.data = favourites.set(favourites.size, action.payload.data)
+            }
           }
           return state.mergeDeep(action.payload.path, 
             Immutable.fromJS(action.payload.data)); 

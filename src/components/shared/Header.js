@@ -8,6 +8,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Logo from './../../assets/images/logo.svg';
 import _ from 'lodash';
+import { List } from "immutable";
 
 const Header = (props) => {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
@@ -55,7 +56,7 @@ const Header = (props) => {
                   className="text-white px-3 py-4 lg:py-2 flex items-center text-md"
                   href="#"
                 >
-                  <span className="inline-block ml-2">My Favourites {!_.isEmpty(favourites) && `(${favourites.size})`}</span>
+                  <span className="inline-block ml-2">My Favourites {favourites.size > 0 && `(${favourites.size})`}</span>
                 </a>
               </li>
               <li className="flex items-center">
@@ -75,7 +76,7 @@ const Header = (props) => {
 
 export default connect(
   state => ({
-    favourites: state.getIn('appData.favourites'.split('.'), [])
+    favourites: state.getIn('appData.favourites'.split('.'), new List([]))
   }),
   dispatch => ({})
 )(Header);

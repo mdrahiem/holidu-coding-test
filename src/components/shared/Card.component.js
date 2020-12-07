@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMapMarkerAlt, faStar, faAngleRight, faImage, faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faMapMarkerAlt, faStar, faAngleRight, faImage, faHeart, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import Rating from 'react-rating';
 import _ from 'lodash';
 import SimpleImageSlider from "react-simple-image-slider";
@@ -93,10 +93,13 @@ const CardComp = (props) => {
           </div>
           <button className="bg-primary text-white p-4 uppercase rounded font-semibold">View offer</button>
         </footer>
-        <span className="absolute bg-white rounded-sm text-gray-800 p-1 font-semibold text-sm z-10 card-badge-left">
-          <FontAwesomeIcon icon={faImage} className="pr-1 text-green-400" size="lg" />
-          Mountain View
-        </span>
+        {
+          _.get(cardDetails, 'cancellationPolicy.freeCancellation'.split('.'), false) &&
+          <span className="absolute bg-white rounded-sm text-gray-800 p-1 font-semibold text-sm z-10 card-badge-left">
+            <FontAwesomeIcon icon={faWindowClose} className="pr-1 text-red-500" size="lg" />
+            Free Cancellation
+          </span>
+        }
         <div className="absolute card-badge-right">
           <button className="bg-white rounded-full w-8 h-8 shadow-md focus:outline-none" onClick={() => handleFavBtnClick(cardDetails.id)}>
             <FontAwesomeIcon icon={faHeart} className={props.favourites.includes(cardDetails.id) ? 'text-secondary hover:text-secondary' : 'text-gray-500 hover:text-secondary'} size="sm" />
